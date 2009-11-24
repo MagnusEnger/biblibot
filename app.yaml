@@ -1,0 +1,10 @@
+application: biblibot
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /_wave/.*
+  script: biblibot.py
+- url: /assets
+  static_dir: assets
