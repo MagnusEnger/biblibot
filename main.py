@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#
-# Copyright 2007 Google Inc.
+
+# Copyright 2007 Libriotech
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,19 +15,18 @@
 # limitations under the License.
 #
 
-
-
-
+import os
 import wsgiref.handlers
 
-
 from google.appengine.ext import webapp
-
+from google.appengine.ext.webapp import template
 
 class MainHandler(webapp.RequestHandler):
 
   def get(self):
-    self.response.out.write('Hello world!')
+    template_values = {}
+    path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+    self.response.out.write(template.render(path, template_values))
 
 
 def main():
